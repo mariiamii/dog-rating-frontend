@@ -56,5 +56,13 @@ export default App
 /* STEPS:
 - √dog dropdown, which will iterate through all the breeds
 - √create filter by breed name
+
 - use NavLink for routing
+
+- sort by avg_rating
+- create shuffle method to randomize dogs array
+- create some way to limit dogs array to 5 dogs
+- load a limited amount of DogItem components
+- infinite scroll down or btn to add more DogItem components to DOM
+
 */

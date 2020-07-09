@@ -1,27 +1,35 @@
 import React from 'react'
 
 class DogItem extends React.Component {
-
-state = {
-    avgRating: 0,
-    rating: 0,
-    clicked: false
-}
+    state = {
+        avgRating: 0,
+        rating: 0,
+        clicked: false
+    }
 
     componentDidMount = () => {
-        let ratingsArr = this.props.dog.dog_ratings
-        let newArr = ratingsArr.map((rating) => {
+        let ratingsObjsArr = this.props.dog.dog_ratings
+        let newArr = ratingsObjsArr.map((rating) => {
             return rating.rating
         })
-        this.setState({
-            avgRating: (newArr.reduce((a, b) => a + b) / newArr.length).toFixed(1)
+        fetch(`http://localhost:3000/dogs/${this.props.dog.id}`, {
+            method: 'PATCH',
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                avg_rating: (newArr.reduce((a, b) => a + b) / newArr.length).toFixed(1)
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            this.setState({
+                avgRating: data.avg_rating
+            })
         })
     }
     
     handleClick = (event) => {
-        console.log(event.target.value)
-        console.log(this.props.dog.id, "dog id")
-        
         fetch("http://localhost:3000/dog_ratings", {
             method: 'POST',
             headers: {
@@ -34,20 +42,30 @@ state = {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
-            let ratingsArr = this.props.dog.dog_ratings
-            ratingsArr.push(data)
-            console.log(ratingsArr)
-            let newArr = ratingsArr.map((rating) => {
+            let ratingsObjsArr = this.props.dog.dog_ratings
+            ratingsObjsArr.push(data)
+    
+            let newArr = ratingsObjsArr.map((rating) => {
                 return rating.rating
             })
             
             this.setState({
             avgRating: (newArr.reduce((a, b) => a + b) / newArr.length).toFixed(1),
             clicked: !this.state.clicked
+            })
         })
-        }
-        )
+    }
+
+    componentDidUpdate() {
+        fetch(`http://localhost:3000/dogs/${this.props.dog.id}`, {
+            method: 'PATCH',
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                avg_rating: this.state.avgRating
+            })
+        })
     }
 
     render() {
@@ -81,6 +99,10 @@ export default DogItem
 - √make 5 btn's to equal values 1-5
 - √onClick event listener on the btn element
 - √clickHandler w/ POST request (/dog_ratings)
-- trigger a re-render once the fetch is done
+- √trigger a re-render once the fetch is done
 - √remove btn's after POST
+
+- √componentDidMount: PATCH request to /dogs to update avg_rating
+- √backend: make avg_rating attribute for dogs model (default: empty integer)
+- handleClick: patch request to /dogs/avg_rating
 */
