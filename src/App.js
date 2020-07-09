@@ -36,3 +36,10 @@ class App extends React.Component {
 }
 
 export default App
+
+
+/* STEPS:
+- dog dropdown, which will iterate through all the breeds
+- create filter by breed name
+- use NavLink for routing
+*/
