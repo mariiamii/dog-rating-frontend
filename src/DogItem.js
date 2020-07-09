@@ -32,7 +32,7 @@ state = {
                 rating: event.target.value
             })
         })
-        this. setState({
+        this.setState({
             clicked: !this.state.clicked
         })
     }
