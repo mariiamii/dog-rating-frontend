@@ -32,9 +32,22 @@ state = {
                 rating: event.target.value
             })
         })
-        this.setState({
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+            let ratingsArr = this.props.dog.dog_ratings
+            ratingsArr.push(data)
+            console.log(ratingsArr)
+            let newArr = ratingsArr.map((rating) => {
+                return rating.rating
+            })
+            
+            this.setState({
+            avgRating: (newArr.reduce((a, b) => a + b) / newArr.length).toFixed(1),
             clicked: !this.state.clicked
         })
+        }
+        )
     }
 
     render() {
