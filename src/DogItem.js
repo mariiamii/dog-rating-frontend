@@ -104,5 +104,5 @@ export default DogItem
 
 - √componentDidMount: PATCH request to /dogs to update avg_rating
 - √backend: make avg_rating attribute for dogs model (default: empty integer)
-- handleClick: patch request to /dogs/avg_rating
+- √handleClick: patch request to /dogs/avg_rating
 */

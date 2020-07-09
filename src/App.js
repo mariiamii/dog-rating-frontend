@@ -23,7 +23,9 @@ class App extends React.Component {
   filteredDogsArray = () => {
     let theArrayToReturn = this.state.dogs
 
-    if (this.state.dropdownOption !== 'All') {
+    if (this.state.dropdownOption === 'Top Dogs') {
+      theArrayToReturn = this.state.dogs.sort((a, b) => a.avg_rating > b.avg_rating ? -1 : 1)
+    } else if (this.state.dropdownOption !== 'All') {
       theArrayToReturn = this.state.dogs.filter(dog => {
         return dog.breed.name === this.state.dropdownOption
       })

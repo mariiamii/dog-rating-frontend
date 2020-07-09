@@ -12,6 +12,7 @@ class DogDropdown extends Component {
                 <h2>Dog Breeds</h2>
                 <select name='breed' id='breed' value={this.dropdownOption} onChange={this.handleChange}>
                 <option value='All'>All</option>
+                <option value='Top Dogs'>Top Dogs</option>
                 <option value='Shiba'>Shiba</option>
                 <option value='Corgi'>Corgi</option>
                 <option value='Husky'>Husky</option>
