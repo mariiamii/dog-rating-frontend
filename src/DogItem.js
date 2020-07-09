@@ -17,11 +17,6 @@ class DogItem extends React.Component {
     }
     
     handleClick = (event) => {
-        // this.setState({
-        //     rating: event.target.value
-        // })
-        // console.log(event.target)
-        // console.log(this.state)
         console.log(event.target.value)
         console.log(this.props.dog.id, "dog id")
         
@@ -58,8 +53,9 @@ class DogItem extends React.Component {
 export default DogItem
 
 /* STEPS:
-- make 5 btn's to equal values 1-5
-- oClick event listener on the btn element
-- clickHandler w/ POST request (/dog_ratings)
+- √make 5 btn's to equal values 1-5
+- √onClick event listener on the btn element
+- √clickHandler w/ POST request (/dog_ratings)
 - trigger a re-render once the fetch is done
+- remove btn's after POST
 */
