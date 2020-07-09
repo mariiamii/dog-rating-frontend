@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class DogDropdown extends Component {
-
     handleChange = (event) => {
         this.props.changeDropdownOption(event.target.value)
     }

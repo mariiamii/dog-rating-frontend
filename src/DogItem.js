@@ -9,24 +9,31 @@ class DogItem extends React.Component {
 
     componentDidMount = () => {
         let ratingsObjsArr = this.props.dog.dog_ratings
+        // console.log(ratingsObjsArr, "before map")
         let newArr = ratingsObjsArr.map((rating) => {
             return rating.rating
         })
-        fetch(`http://localhost:3000/dogs/${this.props.dog.id}`, {
-            method: 'PATCH',
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                avg_rating: (newArr.reduce((a, b) => a + b) / newArr.length).toFixed(1)
+        
+        // console.log(newArr, "after map")
+        // console.log(newArr.count, "array count")
+        if (newArr.length > 0 ) {
+            // console.log("fetch patch trigger")
+            fetch(`http://localhost:3000/dogs/${this.props.dog.id}`, {
+                method: 'PATCH',
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    avg_rating: (newArr.reduce((a, b) => a + b) / newArr.length).toFixed(1)
+                })
             })
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            this.setState({
-                avgRating: data.avg_rating
+            .then(resp => resp.json())
+            .then(data => {
+                this.setState({
+                    avgRating: data.avg_rating
+                })
             })
-        })
+        }
     }
     
     handleClick = (event) => {

@@ -3,6 +3,9 @@ import React from 'react'
 import './App.css'
 import DogContainer from './DogContainer'
 import DogDropdown from './DogDropdown'
+import Home from './Home'
+// import NotFound from './NotFound'
+import { Route, Switch } from 'react-router-dom'
 
 class App extends React.Component {
   state = {
@@ -14,10 +17,23 @@ class App extends React.Component {
     fetch("http://localhost:3000/dogs")
     .then(resp => resp.json())
     .then(arrayOfDogs => {
+      this.shuffle(arrayOfDogs)
       this.setState({
         dogs: arrayOfDogs
       })
     })
+  }
+
+  shuffle = (array) => {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   }
 
   filteredDogsArray = () => {
@@ -40,6 +56,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <main>
+          <Switch>
+            <Route path="/home" exact component={Home} />
+            {/* <Route component={NotFound} /> */}
+          </Switch>
+        </main>
+
         <DogDropdown 
           dropdownOption={this.state.dropdownOption} 
           changeDropdownOption={this.changeDropdownOption}
@@ -59,10 +82,8 @@ export default App
 - √dog dropdown, which will iterate through all the breeds
 - √create filter by breed name
 
-- use NavLink for routing
-
-- sort by avg_rating
-- create shuffle method to randomize dogs array
+- √sort by avg_rating
+- √create shuffle method to randomize dogs array
 - create some way to limit dogs array to 5 dogs
 - load a limited amount of DogItem components
 - infinite scroll down or btn to add more DogItem components to DOM

@@ -18,8 +18,3 @@ let DogContainer = (props) => {
   }
   
 export default DogContainer
-
-
-/* STEPS:
-
-*/
