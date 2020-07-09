@@ -1,10 +1,12 @@
 import React from 'react'
 
 class DogItem extends React.Component {
-    state = {
-        avgRating: 0,
-        rating: 0
-    }
+
+state = {
+    avgRating: 0,
+    rating: 0,
+    clicked: false
+}
 
     componentDidMount = () => {
         let ratingsArr = this.props.dog.dog_ratings
@@ -30,7 +32,9 @@ class DogItem extends React.Component {
                 rating: event.target.value
             })
         })
-    
+        this. setState({
+            clicked: !this.state.clicked
+        })
     }
 
     render() {
@@ -40,11 +44,19 @@ class DogItem extends React.Component {
             <li>
                 <p>{this.state.avgRating}</p>
                 <img src={image_url} alt={this.props.dog.breed.name} />
-                <button value="1" onClick={this.handleClick}>1</button>
-                <button value="2" onClick={this.handleClick}>2</button>
-                <button value="3" onClick={this.handleClick}>3</button>
-                <button value="4" onClick={this.handleClick}>4</button>
-                <button value="5" onClick={this.handleClick}>5</button>
+                    <div className="rating_buttons_container">{this.state.clicked
+                        ? 
+                        ""
+                        :
+                        <div className="rating_buttons">
+                            <button value="1" onClick={this.handleClick}>1</button>
+                            <button value="2" onClick={this.handleClick}>2</button>
+                            <button value="3" onClick={this.handleClick}>3</button>
+                            <button value="4" onClick={this.handleClick}>4</button>
+                            <button value="5" onClick={this.handleClick}>5</button>
+                        </div>
+                        }
+                    </div>
             </li>
         )
     }
@@ -57,5 +69,5 @@ export default DogItem
 - √onClick event listener on the btn element
 - √clickHandler w/ POST request (/dog_ratings)
 - trigger a re-render once the fetch is done
-- remove btn's after POST
+- √remove btn's after POST
 */
