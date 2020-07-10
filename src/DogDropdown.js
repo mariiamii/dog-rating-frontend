@@ -8,20 +8,20 @@ class DogDropdown extends Component {
     render() {
         return (
             <nav>
-                <h2>Dog Breeds</h2>
+                <h2>Select Your Breed</h2>
                 <select name='breed' id='breed' value={this.dropdownOption} onChange={this.handleChange}>
-                <option value='All'>All</option>
-                <option value='Top Dogs'>Top Dogs</option>
-                <option value='Shiba'>Shiba</option>
-                <option value='Corgi'>Corgi</option>
-                <option value='Husky'>Husky</option>
-                <option value='Golden Retriever'>Golden Retriever</option>
-                <option value='Dachshund'>Dachshund</option>
-                <option value='French Bulldog'>French Bulldog</option>
-                <option value='Poodle'>Poodle</option>
-                <option value='Australian Shepherd'>Australian Shepherd</option>
-                <option value='Beagle'>Beagle</option>
-                <option value='Pomeranian'>Pomeranian</option>
+                    <option className="dropdown" value='All'>All</option>
+                    <option className="dropdown" value='Top Dogs'>View Top Dogs</option>
+                    <option className="dropdown" value='Shiba'>Shiba Inu</option>
+                    <option className="dropdown" value='Corgi'>Corgi</option>
+                    <option className="dropdown" value='Husky'>Siberian Husky</option>
+                    <option className="dropdown" value='Golden Retriever'>Golden Retriever</option>
+                    <option className="dropdown" value='Dachshund'>Dachshund</option>
+                    <option className="dropdown" value='French Bulldog'>French Bulldog</option>
+                    <option className="dropdown" value='Poodle'>Poodle</option>
+                    <option className="dropdown" value='Australian Shepherd'>Australian Shepherd</option>
+                    <option className="dropdown" value='Beagle'>Beagle</option>
+                    <option className="dropdown" value='Pomeranian'>Pomeranian</option>
                 </select>
             </nav>
         )

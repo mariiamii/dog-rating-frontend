@@ -79,23 +79,27 @@ class DogItem extends React.Component {
         let { image_url } = this.props.dog
 
         return (
-            <li>
-                <p>{this.state.avgRating}</p>
-                <img src={image_url} alt={this.props.dog.breed.name} />
-                    <div className="rating_buttons_container">{this.state.clicked
-                        ? 
-                        ""
-                        :
-                        <div className="rating_buttons">
-                            <button value="1" onClick={this.handleClick}>1</button>
-                            <button value="2" onClick={this.handleClick}>2</button>
-                            <button value="3" onClick={this.handleClick}>3</button>
-                            <button value="4" onClick={this.handleClick}>4</button>
-                            <button value="5" onClick={this.handleClick}>5</button>
-                        </div>
-                        }
-                    </div>
-            </li>
+            <div className="div-container">
+                <li className="container">
+                    <span className="image-container">
+                        <h2>Rating: {this.state.avgRating}</h2>
+                        <img className="image" src={image_url} alt={this.props.dog.breed.name} />
+                            <div className="rating-buttons-container">{this.state.clicked
+                                ? 
+                                ""
+                                :
+                                <div className="rating-buttons">
+                                    <button className="rating-btn" value="1" onClick={this.handleClick}>1</button>
+                                    <button className="rating-btn" value="2" onClick={this.handleClick}>2</button>
+                                    <button className="rating-btn" value="3" onClick={this.handleClick}>3</button>
+                                    <button className="rating-btn" value="4" onClick={this.handleClick}>4</button>
+                                    <button className="rating-btn" value="5" onClick={this.handleClick}>5</button>
+                                </div>
+                            }
+                            </div>
+                    </span>
+                </li>
+            </div>
         )
     }
 }

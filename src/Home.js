@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default () => {
-    return <h2>Select the dog breed</h2>
+    return <h1>Rate the Dogifs!</h1>
 }
