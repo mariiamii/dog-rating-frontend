@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: white;
+  background-color: #FFE8C2;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@
 }
 
 .rating-btn {
-  background-color: #E1440D;
+  background-color: #DE3C4B;
   border: none;
   padding: 20px 25px;
   color: white;
@@ -52,7 +52,7 @@
 
 .container {
   width: 600px;
-  background-color: #FFECC2; 
+  background-color: #FEF9EF; 
   display: flex;
   align-items: center;
   justify-content: center; 
@@ -78,4 +78,8 @@
 
 .image {
   padding: 10px;
+}
+
+.App {
+  background-color: #FFE8C2;
 }
